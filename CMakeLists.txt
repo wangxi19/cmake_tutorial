@@ -24,3 +24,19 @@ endif (USE_MYMATH)
 add_executable(Tutorial tutorial.cxx)
 target_link_libraries (Tutorial ${EXTRA_LIBS})
 
+install (TARGETS Tutorial DESTINATION BIN)
+install (FILES "${PROJECT_BINARY_DIR}/TutorialConfig.h" DESTINATION include)
+
+include(CTest)
+
+#define a macro to simplify adding tests, then use it
+macro (do_test arg result)
+  add_test (TutorialComp${arg} Tutorial ${arg})
+  set_tests_properties (TutorialComp${arg}
+    PROPERTIES PASS_REGULAR_EXPRESSION ${result})
+endmacro (do_test)
+ 
+# do a bunch of result based tests
+do_test (25 "25 is 5")
+do_test (-25 "-25 is 0")
+do_test ("" "Usage:.*number")

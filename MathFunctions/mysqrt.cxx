@@ -1,3 +1,5 @@
+#include <math.h>
+
 double mysqrt(double v) {
-    return v*v;
+    return sqrt(v);
 }
