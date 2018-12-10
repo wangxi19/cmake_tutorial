@@ -24,7 +24,7 @@ endif (USE_MYMATH)
 add_executable(Tutorial tutorial.cxx)
 target_link_libraries (Tutorial ${EXTRA_LIBS})
 
-install (TARGETS Tutorial DESTINATION BIN)
+install (TARGETS Tutorial DESTINATION bin)
 install (FILES "${PROJECT_BINARY_DIR}/TutorialConfig.h" DESTINATION include)
 
 include(CTest)
@@ -40,3 +40,8 @@ endmacro (do_test)
 do_test (25 "25 is 5")
 do_test (-25 "-25 is 0")
 do_test ("" "Usage:.*number")
+
+# does this system provide the log and exp functions?
+include (CheckFunctionExists)
+check_function_exists (log HAVE_LOG)
+check_function_exists (exp HAVE_EXP)
