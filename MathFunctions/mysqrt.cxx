@@ -1,4 +1,5 @@
 #include "TutorialConfig.h"
+#include "Table.h"
 #include <math.h>
 #include <stdio.h>
 
